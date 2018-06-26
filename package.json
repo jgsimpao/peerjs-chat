@@ -2,8 +2,9 @@
   "name": "peerjs-chat",
   "version": "1.0.0",
   "description": "",
-  "main": "js/peer.js",
+  "main": "js/app.js",
   "scripts": {
+    "start": "node js/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
