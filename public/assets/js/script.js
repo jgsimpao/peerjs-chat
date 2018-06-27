@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const peer = new Peer();
+    const peer = new Peer({host:'aqueous-brushlands-37757.herokuapp.com', secure:true, port:443});
 
     peer.on('open', function(id) {
         console.log('My peer ID is: ' + id);
