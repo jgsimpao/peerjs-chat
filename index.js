@@ -4,8 +4,8 @@ const ExpressPeerServer = require('peer').ExpressPeerServer;
 
 app.use(express.static(__dirname + '/public'));
 
-//const port = process.env.PORT || 9000;
-const server = app.listen(9000);
+const port = process.env.PORT || 9000;
+const server = app.listen(port);
 
 const options = {
     debug: true
