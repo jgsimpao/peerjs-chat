@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
+const ExpressPeerServer = require('peer').ExpressPeerServer;
 
 app.use(express.static(__dirname + '/public'));
-app.listen(port);
+
+//const port = process.env.PORT || 9000;
+const server = app.listen(9000);
+
+const options = {
+    debug: true
+}
+
+const peerserver = ExpressPeerServer(server, options);
+
+app.use('/api', peerserver);
