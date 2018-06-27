@@ -18,7 +18,8 @@
 	},
 	"homepage": "https://github.com/jgsimpao/peerjs-chat#readme",
 	"dependencies": {
-		"express": "^4.16.3"
+		"express": "^4.16.3",
+		"peer": "^0.2.8"
 	},
 	"engines": {
 		"node": "8.11.3"

@@ -11,20 +11,40 @@
 </head>
 <body>
 	<div class="main container">
-		<div class="section title-section">
-			<h1>PeerJS Chat</h1>
-		</div>
-		<div class="section chat-section">
-
-		</div>
-		<div class="section message-section">
-			<div class="form-group">
-				<label for="comment">Message:</label>
-				<textarea class="form-control" rows="3" id="comment"></textarea>
+		<div class="row">
+			<div class="section title-section col">
+				<h1>PeerJS Chat</h1>
 			</div>
 		</div>
-		<div class="section controls-section">
-			<button type="button" class="btn btn-primary">Send</button>
+
+		<div class="row">
+			<div class="panel panel-1 col-4">
+				<div class="section welcome-section">
+					<h4>Welcome User!</h4>
+					<h6>Your Peer ID is:</h6>
+					<h6 id="user-id" class="user-id"></h6>
+				</div>
+				<div class="section peer-list-section">
+					<h4>Peer List:</h4>
+					<div id="peer-list" class="peer-list"></div>
+				</div>
+				<div class="section new-peer-section">
+					<h4>Connect to Peer:</h4>
+					<input type="text" id="new-peer-id" class="form-control" />
+					<button type="button" id="new-peer-btn" class="btn btn-primary">Add</button>
+				</div>
+			</div>
+			<div class="panel panel-2 col-8">
+				<div class="section chat-window-section">
+					<h4>Chat:</h4>
+					<div id="chat-window" class="chat-window"></div>
+				</div>
+				<div class="section new-message-section">
+					<h4>Message:</h4>
+					<textarea id="new-message-text" class="form-control" rows="3"></textarea>
+					<button type="button" id="new-message-btn" class="btn btn-primary">Send</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	
