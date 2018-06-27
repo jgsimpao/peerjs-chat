@@ -17,6 +17,9 @@
 		"url": "https://github.com/jgsimpao/peerjs-chat/issues"
 	},
 	"homepage": "https://github.com/jgsimpao/peerjs-chat#readme",
+	"dependencies": {
+		"express": "^4.16.3"
+	},
 	"engines": {
 		"node": "8.11.3"
 	}
