@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    //const peer = new Peer({host:'peerjs-server-chat.herokuapp.com', secure:true, port:443});
+    const peer = new Peer({host:'peerjs-server-chat.herokuapp.com', secure:true, port:443});
     //const peer = new Peer();
-    const peer = new Peer({host: '/', port: '', path: '/app'});
+    //const peer = new Peer({host: '/', port: '', path: '/app'});
 
     var conns = [];
     //var conn;
