@@ -1,11 +1,33 @@
 $(document).ready(function() {
     const peer = new Peer();
+    var userName = '';
+    var userID = '';
     var peerIDs = [];
-    
-    peer.on('open', function(userID) {
+
+    $('#new-user-modal').modal({
+        show: true,
+        keyboard: false,
+        backdrop: 'static'
+    });
+
+    $('#new-user-name').on('input', function(){
+        userName = $('#new-user-name').val().trim();
+
+        if (userName.length)
+            $('#new-user-btn').prop('disabled', false);
+        else
+            $('#new-user-btn').prop('disabled', true);
+    });
+
+    peer.on('open', function(id) {
+        userID = id;
+    });
+
+    $('#new-user-btn').click(function() {
+        $('#user-name').html(userName);
         $('#user-id').html(userID);
     });
-    
+
     $('#new-peer-btn').click(function() {
         $('#peer-list').append('<p class="peer-id">' + $('#new-peer-id').val() + '</p>');
         peerIDs.push($('#new-peer-id').val());
