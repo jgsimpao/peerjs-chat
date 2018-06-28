@@ -29,34 +29,37 @@ $(document).ready(function() {
     });
 
     $('#new-peer-btn').click(function() {
-        var newPeerID = $('#new-peer-id').val();
+        var newPeerID = $('#new-peer-id').val().trim();
 
-        if (peerIDs.includes(newPeerID)) {
-            $('.alert').show();
-        } else {
-            peerIDs.push(newPeerID);
-            $('#peer-list').append('<p class="peer-id">' + newPeerID + ' <span class="peer-name"></span></p>');
+        if (newPeerID.length) {
+            if (peerIDs.includes(newPeerID)) {
+                $('.new-peer-warning').show();
+            } else {
+                peerIDs.push(newPeerID);
+                $('.new-peer-warning').hide();
+                $('#peer-list').append('<p class="peer-id">' + newPeerID + ' <span class="peer-name"></span></p>');
+            }
+        }
+    });
+    
+    // Send message to peers
+    $('#new-message-btn').click(function() {
+        var newMessage = $('#new-message-text').val().trim();
+
+        if (newMessage.length) {
+            peerIDs.forEach(function(peerID) {
+                var conn = peer.connect(peerID);
+    
+                conn.on('open', function() {
+                    conn.send({name: userName, id: userID, message: newMessage});
+                });
+            });
+
+            $('#chat-window').append('<p class="chat-message"><strong>' + userName + ' [ID: ' + userID + ']:</strong><br>' + newMessage + '</p>');
         }
     });
 
-    $('.alert-close').click(function() {
-        $('.alert').hide();
-    });
-    
-    // Send messages
-    $('#new-message-btn').click(function() {
-        $('#chat-window').append('<p class="chat-message"><strong>' + userName + ' [ID: ' + userID + ']:</strong><br>' + $('#new-message-text').val() + '</p>');
-        
-        peerIDs.forEach(function(peerID) {
-            var conn = peer.connect(peerID);
-
-            conn.on('open', function() {
-                conn.send({name: userName, id: userID, message: $('#new-message-text').val()});
-            });
-        });
-    });
-
-    // Receive messages
+    // Receive message from peers
     peer.on('connection', function(conn) {
         conn.on('data', function(data) {
             $('#chat-window').append('<p class="chat-message"><strong>' + data.name + ' [ID: ' + data.id + ']:</strong><br>' + data.message + '</p>');

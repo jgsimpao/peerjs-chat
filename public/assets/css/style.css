@@ -6,16 +6,14 @@
 }
 
 .main {
-    max-width: 990px;
+    max-width: 1000px;
     height: 100vh;
-    position: relative;
 }
 
-.alert {
+.new-peer-warning {
+    color: #ff0000;
+    float: left;
     display: none;
-    position: absolute;
-    top: 0;
-    z-index: 1;
 }
 
 .row-1 {

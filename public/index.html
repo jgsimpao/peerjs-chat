@@ -13,11 +13,6 @@
 </head>
 <body>
 	<div class="main container">
-		<div class="alert alert-warning fade show">
-			<button type="button" class="alert-close close">&times;</button>
-			<strong>Warning!</strong> Entered Peer ID is already in the list.
-		</div>
-
 		<div class="row">
 			<div class="panel panel-1 col">
 				<div class="row-1">
@@ -46,6 +41,7 @@
 						<h5>Connect to Peer:</h5>
 						<input type="text" id="new-peer-id" class="input-text form-control" />
 						<div class="input-controls text-right">
+							<span class="warning new-peer-warning">Peer ID is already in the list!</span>
 							<button type="button" id="new-peer-btn" class="btn btn-primary">Add</button>
 						</div>
 					</div>
