@@ -49,7 +49,7 @@ $(document).ready(function() {
                 $('.new-peer-duplicate').show();
                 $('.new-peer-invalid').hide();
             } else {
-                if (newPeerID.match(/^[A-Za-z0-9]{16}$/)) {
+                if (newPeerID.match(/^[a-z0-9]{16}$/)) {
                     peerIDs.push(newPeerID);
                     $('#new-peer-id').val('');
                     $('.warning').hide();
