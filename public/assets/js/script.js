@@ -45,13 +45,19 @@ $(document).ready(function() {
         var newPeerID = '';
 
         if (newPeerID = validateInput($('#new-peer-id').val())) {
-            if (peerIDs.includes(newPeerID)) {
-                $('.new-peer-warning').show();
+            if (peerIDs.includes(newPeerID) || newPeerID === userID) {
+                $('.new-peer-duplicate').show();
+                $('.new-peer-invalid').hide();
             } else {
-                peerIDs.push(newPeerID);
-                $('#new-peer-id').val('');
-                $('.new-peer-warning').hide();
-                $('#peer-list').append('<p class="peer-id">' + escapeHtml(newPeerID) + ' <span class="peer-name"></span></p>');
+                if (newPeerID.match(/^[A-Za-z0-9]{16}$/)) {
+                    peerIDs.push(newPeerID);
+                    $('#new-peer-id').val('');
+                    $('.warning').hide();
+                    $('#peer-list').append('<p class="peer-id">' + escapeHtml(newPeerID) + ' <span class="peer-name"></span></p>');
+                } else {
+                    $('.new-peer-invalid').show();
+                    $('.new-peer-duplicate').hide();
+                }
             }
         }
     });

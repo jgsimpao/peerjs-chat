@@ -39,7 +39,8 @@ h5,
     height: 15vh;
 }
 
-.row-2 {
+.row-2,
+#chat-window {
     height: 60vh;
 }
 
@@ -47,7 +48,8 @@ h5,
     height: 20vh;
 }
 
-.row-2-2 {
+.row-2-2,
+#peer-list {
     height: 40vh;
 }
 
@@ -59,7 +61,7 @@ h5,
     margin-top: 15px;
 }
 
-.new-peer-warning {
+.warning {
     color: #ff0000;
     float: left;
     display: none;
