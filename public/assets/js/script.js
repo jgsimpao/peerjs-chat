@@ -1,8 +1,20 @@
 $(document).ready(function() {
     const peer = new Peer();
+    const entities = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
     var userName = '';
     var userID = '';
     var peerIDs = [];
+
+    function escapeHtml(text) {
+        return text.replace(/[&<>"']/g, function(match) { return entities[match]; });
+    }
+
+    function validateInput(text) {
+        if (text.trim().length)
+            return true;
+        
+        return false;
+    }
 
     $('#new-user-modal').modal({
         show: true,
@@ -11,9 +23,9 @@ $(document).ready(function() {
     });
 
     $('#new-user-name').on('input', function(){
-        userName = $('#new-user-name').val().trim();
+        userName = $('#new-user-name').val();
 
-        if (userName.length)
+        if (validateInput(userName))
             $('#new-user-btn').prop('disabled', false);
         else
             $('#new-user-btn').prop('disabled', true);
@@ -24,29 +36,29 @@ $(document).ready(function() {
     });
 
     $('#new-user-btn').click(function() {
-        $('#user-name').html(userName);
-        $('#user-id').html(userID);
+        $('#user-name').html(escapeHtml(userName));
+        $('#user-id').html(escapeHtml(userID));
     });
 
     $('#new-peer-btn').click(function() {
-        var newPeerID = $('#new-peer-id').val().trim();
+        var newPeerID = $('#new-peer-id').val();
 
-        if (newPeerID.length) {
+        if (validateInput(newPeerID)) {
             if (peerIDs.includes(newPeerID)) {
                 $('.new-peer-warning').show();
             } else {
                 peerIDs.push(newPeerID);
                 $('.new-peer-warning').hide();
-                $('#peer-list').append('<p class="peer-id">' + newPeerID + ' <span class="peer-name"></span></p>');
+                $('#peer-list').append('<p class="peer-id">' + escapeHtml(newPeerID) + ' <span class="peer-name"></span></p>');
             }
         }
     });
     
     // Send message to peers
     $('#new-message-btn').click(function() {
-        var newMessage = $('#new-message-text').val().trim();
+        var newMessage = $('#new-message-text').val();
 
-        if (newMessage.length) {
+        if (validateInput(newMessage)) {
             peerIDs.forEach(function(peerID) {
                 var conn = peer.connect(peerID);
     
@@ -55,14 +67,14 @@ $(document).ready(function() {
                 });
             });
 
-            $('#chat-window').append('<p class="chat-message"><strong>' + userName + ' [ID: ' + userID + ']:</strong><br>' + newMessage + '</p>');
+            $('#chat-window').append('<p class="chat-message"><strong>' + escapeHtml(userName) + ' [ID: ' + escapeHtml(userID) + ']:</strong><br>' + escapeHtml(newMessage) + '</p>');
         }
     });
 
     // Receive message from peers
     peer.on('connection', function(conn) {
         conn.on('data', function(data) {
-            $('#chat-window').append('<p class="chat-message"><strong>' + data.name + ' [ID: ' + data.id + ']:</strong><br>' + data.message + '</p>');
+            $('#chat-window').append('<p class="chat-message"><strong>' + escapeHtml(data.name) + ' [ID: ' + escapeHtml(data.id) + ']:</strong><br>' + escapeHtml(data.message) + '</p>');
             /*
             var index = peerIDs.findIndex(data.id);
 
