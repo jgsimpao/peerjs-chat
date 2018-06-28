@@ -1,3 +1,13 @@
+h1 {
+    padding-top: 30px;
+}
+
+h3,
+h5,
+#chat-window {
+    padding-top: 15px;
+}
+
 .welcome-section,
 #peer-list,
 #chat-window {
@@ -10,10 +20,19 @@
     height: 100vh;
 }
 
-.new-peer-warning {
-    color: #ff0000;
-    float: left;
-    display: none;
+.panel-1 {
+    color: #fff;
+    background-color: #162e45;
+}
+
+.panel-2 {
+    color: #fff;
+    background-color: #33a1cd;
+}
+
+.panel-3 {
+    color: #000;
+    background-color: #a1dcf3;
 }
 
 .row-1 {
@@ -24,10 +43,6 @@
     height: 60vh;
 }
 
-#chat-window {
-    height: 50vh;
-}
-
 .row-2-1 {
     height: 20vh;
 }
@@ -36,14 +51,16 @@
     height: 40vh;
 }
 
-#peer-list {
-    height: 30vh;
-}
-
 .row-3 {
     height: 25vh;
 }
 
 .input-controls {
     margin-top: 15px;
+}
+
+.new-peer-warning {
+    color: #ff0000;
+    float: left;
+    display: none;
 }

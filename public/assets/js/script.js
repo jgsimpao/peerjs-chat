@@ -18,8 +18,10 @@ $(document).ready(function() {
         return false;
     }
 
+    // New User modal options
     $('#new-user-modal').modal({show: true, keyboard: false, backdrop: 'static'});
 
+    // New User modal button enable/disable
     $('#new-user-name').on('input', function() {
         if (userName = validateInput($('#new-user-name').val()))
             $('#new-user-btn').prop('disabled', false);
@@ -27,15 +29,18 @@ $(document).ready(function() {
             $('#new-user-btn').prop('disabled', true);
     });
 
+    // Retrieve user's Peer ID
     peer.on('open', function(id) {
         userID = id;
     });
 
+    // Display user's Name and Peer ID
     $('#new-user-btn').click(function() {
         $('#user-name').html(escapeHtml(userName));
         $('#user-id').html(escapeHtml(userID));
     });
 
+    // Add Peer ID to peer connections
     $('#new-peer-btn').click(function() {
         var newPeerID = '';
 
