@@ -1,5 +1,21 @@
+.welcome-section,
+#peer-list,
+#chat-window {
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
 .main {
     max-width: 990px;
+    height: 100vh;
+    position: relative;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
 }
 
 .row-1 {
@@ -10,12 +26,20 @@
     height: 60vh;
 }
 
+#chat-window {
+    height: 50vh;
+}
+
 .row-2-1 {
     height: 20vh;
 }
 
 .row-2-2 {
     height: 40vh;
+}
+
+#peer-list {
+    height: 30vh;
 }
 
 .row-3 {
