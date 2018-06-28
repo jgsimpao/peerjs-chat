@@ -1,7 +1,27 @@
 .main {
     max-width: 990px;
 }
-/*
-.main .section {
-    margin: 15px;
-}*/
+
+.row-1 {
+    height: 15vh;
+}
+
+.row-2 {
+    height: 60vh;
+}
+
+.row-2-1 {
+    height: 20vh;
+}
+
+.row-2-2 {
+    height: 40vh;
+}
+
+.row-3 {
+    height: 25vh;
+}
+
+.input-controls {
+    margin-top: 15px;
+}

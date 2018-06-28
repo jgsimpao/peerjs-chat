@@ -1,9 +1,5 @@
 $(document).ready(function() {
-    //const peer = new Peer({host: 'peerjs-server-chat.herokuapp.com', secure: true, port: 443});
     const peer = new Peer();
-    //const peer = new Peer({host: '/', port: ''});
-    //const peer = new Peer({port: 443});
-
     var conns = [];
     
     peer.on('open', function(id) {
